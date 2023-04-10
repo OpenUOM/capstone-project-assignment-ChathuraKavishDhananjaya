@@ -10,20 +10,16 @@ export class AppServiceService {
   readonly ROOT_URL;
 
   constructor(private http: HttpClient) {
-    if(environment.production == false){
-      this.ROOT_URL = 'test'
-    }else{
-      this.ROOT_URL = 'api'
-    }
-  }
+    this.ROOT_URL = 'http://localhost:8080'
+}
 
   initializeDB(){
     return this.http.get(`/${this.ROOT_URL}/dbinitialize`)
   }
 
-  getTeacherData(){
-    return this.http.get(`/${this.ROOT_URL}/listTeachers`)
-  }
+  getTeacherData() {
+    return this.http.get('/api/listTeachers')
+}
 
   getStudentData(){
     return this.http.get(`/${this.ROOT_URL}/listStudents`)
@@ -33,9 +29,9 @@ export class AppServiceService {
     return this.http.post(`/${this.ROOT_URL}/getStudentInfo`, payload)
   }
 
-  getOneTeacherData(payload: Object){
-    return this.http.post(`/${this.ROOT_URL}/getTeacherInfo`, payload)
-  }
+  getOneTeacherData(payload: Object) {
+    return this.http.post('/api/getTeacherInfo', payload)
+}
 
   addTeacher(payload: Object){
     return this.http.post(`/${this.ROOT_URL}/addTeacher`, payload)

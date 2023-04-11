@@ -6,13 +6,7 @@ import {
     readTeacherInfo,
     addTeacher,
     deleteTeacher,
-    deleteStudent,
-    readStudentInfo,
-    readTeacherInfo,
-    updateStudent,
-    updateTeacher,
-    dbinitialize
-} from "./database.js";
+  } from "./database.js";
 
 const app = express();
 const bodyParser = require  ("body-parser");

@@ -1,18 +1,18 @@
-const express = require ("express");
-
-const {
-  readTeachers,
-  readStudents,
-  addStudent,
-  addTeacher,
-  deleteTeacher,
-  deleteStudent,
-  readStudentInfo,
-  readTeacherInfo,
-  updateStudent,
-  updateTeacher,
-  dbinitialize
-} = require ("./database.js");
+import express from "express";
+import bodyParser from "body-parser";
+import {
+    initializeDatabase,
+    readTeachers,
+    readTeacherInfo,
+    addTeacher,
+    deleteTeacher,
+    deleteStudent,
+    readStudentInfo,
+    readTeacherInfo,
+    updateStudent,
+    updateTeacher,
+    dbinitialize
+} from "./database.js";
 
 const app = express();
 const bodyParser = require  ("body-parser");
@@ -44,6 +44,7 @@ app.post("/getTeacherInfo", async function (req, res) {
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(data));
 });
+
 
 app.post("/addTeacher", async function (req, res) {
   let reqBody = req.body;

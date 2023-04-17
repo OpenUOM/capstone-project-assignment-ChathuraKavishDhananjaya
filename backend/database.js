@@ -121,45 +121,45 @@ const readStudentInfo = async (id) => {
 }
 
 const addStudent = async (id, name, age, religion) => {
-    const sql = `SELECT * FROM dummyData`
+    const sql = `INSERT INTO student(id,name,age,religion) values (?, ?, ?, ?)`
     return new Promise((resolve, reject) => {
         knex_db
-            .raw(sql)
-            .then((data) => {
-                resolve(data);
-            })
-            .catch((error) => {
-                reject(error);
-            });
-    });
+        .raw(sql, [id, name, age])
+        .then(() => {
+            resolve({status: "Successfully inserted Student"})
+        })
+        .catch((error) => {
+            reject(error);
+        });
+});
 }
 
 const updateStudent = async (name, age, religion, id) => {
-    const sql = `SELECT * FROM dummyData`
+    const sql = `UPDATE teacher SET name=?, age=? religion=? WHERE id=?`
     return new Promise((resolve, reject) => {
         knex_db
-            .raw(sql)
-            .then((data) => {
-                resolve(data);
-            })
-            .catch((error) => {
-                reject(error);
-            });
-    });
+        .raw(sql, [name, age, religion, id])
+        .then(() => {
+            resolve({status: "Successfully updated Student"})
+        })
+        .catch((error) => {
+            reject(error);
+        });
+});
 } 
 
 const deleteStudent = async (id) => {
-    const sql = `SELECT * FROM dummyData`
+    const sql = `DELETE FROM student WHERE id = ?`
     return new Promise((resolve, reject) => {
         knex_db
-            .raw(sql)
-            .then((data) => {
-                resolve(data);
-            })
-            .catch((error) => {
-                reject(error);
-            });
-    });
+        .raw(sql, [id])
+        .then(() => {
+            resolve({status: "Successfully deleted Student"})
+        })
+        .catch((error) => {
+            reject(error);
+        });
+});
 }
 
 module.exports = {

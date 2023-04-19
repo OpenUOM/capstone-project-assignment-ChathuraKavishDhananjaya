@@ -117,7 +117,7 @@ const readStudentInfo = async (id) => {
         .catch((error) => {
             reject(error);
         });
-});
+    });
 }
 
 const addStudent = async (id, name, age, hometown) => {
@@ -135,7 +135,7 @@ const addStudent = async (id, name, age, hometown) => {
 }
 
 const updateStudent = async (id, name, age, hometown) => {
-    const sql = `UPDATE student WHERE id=?, SET name=? age=? hometown=? `
+    const sql = `UPDATE student SET name=?, age=?, hometown=? WHERE id=?`
     return new Promise((resolve, reject) => {
         knex_db
         .raw(sql, [id, name, age, hometown])
@@ -145,7 +145,7 @@ const updateStudent = async (id, name, age, hometown) => {
         .catch((error) => {
             reject(error);
         });
-});
+    });
 } 
 
 const deleteStudent = async (id) => {
@@ -159,7 +159,7 @@ const deleteStudent = async (id) => {
         .catch((error) => {
             reject(error);
         });
-});
+    });
 }
 
 module.exports = {
